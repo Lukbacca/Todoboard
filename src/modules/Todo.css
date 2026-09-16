@@ -1,0 +1,158 @@
+.todo-board{
+	flex: 1;
+	
+	background-color: var(--color-board);
+	padding: 10px;
+	border-radius: 5px;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.todo-lists-container{
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+}
+
+.list-card{
+	background-color: var(--color-card);
+
+	padding: 10px;
+	border-radius: 5px;
+	width: auto;
+	margin: 10px;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.list-heading{
+	margin: 0px;
+	padding-bottom: 10px;
+
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.list-heading-input {
+	width: 50px;
+
+	flex: 1;
+	border: none;
+	outline: none;
+
+	background: transparent;
+	color: var(--color-text);
+	font-size: 16px;
+	text-align: left;
+}
+
+.list-heading-input::placeholder {
+	color: var(--color-placeholder);
+}
+
+.todo-list{
+	border: 1px solid var(--color-border);
+	border-radius: 5px;
+
+	min-width: 300px;
+	padding: 0;
+	margin: 0px;
+
+	list-style-type: none;
+}
+
+.todo-item{
+	margin: 10px;
+	padding: 2px;
+	border-radius: 5px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.todo-checkbox {
+	border: none;
+	accent-color: green;
+	margin-right: 5px;
+}
+
+.todo-checkbox:hover {
+	cursor: pointer;
+}
+
+.todo-name {
+	white-space: pre-wrap;
+	font-family: arial, sans-serif;
+	color: var(--color-text);
+	flex: 1;
+	min-width: 0;
+	border: none;
+	outline: none;
+	background: transparent;
+	font-size: 16px;
+	resize: none;
+	overflow: hidden;
+	padding: 0;
+}
+
+.todo-name::placeholder {
+	font-family: inherit;
+	font-size: 16px;
+	color: var(--color-placeholder);
+	opacity: 1;
+}
+
+.todo-name:focus {
+	outline: none;
+}
+
+.todo-item.completed .todo-name{
+	color: var(--color-muted);
+}
+
+.todo-delete-button{
+	background-color: var(--color-delete);
+	color: var(--color-text);
+
+	border-radius: 50%;
+	width: 12px;
+	height: 12px;
+	padding: 0;
+
+	cursor: pointer;
+	opacity: 0;
+}
+
+.todo-item:hover .todo-delete-button{
+	opacity: 1;
+}
+
+.list-heading .todo-delete-button{
+	opacity: 1;
+}
+
+.todo-add-button{
+	color: var(--color-placeholder);
+	font-size: 16px;
+	border: none;
+	margin: 10px;
+	padding: 5px 10px;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.todo-list-add-button{
+	border-radius: 50%;
+	width: 25px;
+	height: 25px;
+	padding: 0;
+}

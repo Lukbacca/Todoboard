@@ -1,0 +1,79 @@
+:root {
+  background-color: #000;
+  color: #fff;
+  --color-page: #000;
+  --color-header: #2d2d2d;
+  --color-board: #1e1e1e;
+  --color-card: #282828;
+  --color-border: #505050;
+  --color-text: #fff;
+  --color-muted: #969696;
+  --color-placeholder: #808080;
+  --color-add: #32c832;
+  --color-delete: #c83232;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+header {
+  background-color: var(--color-header);
+  height: 80px;
+  width: 100%;
+  margin: 0;
+
+  flex-shrink: 0;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+footer {
+  font-family: Arial, sans-serif;
+  color: var(--color-text);
+  background-color: var(--color-header);
+  height: 80px;
+  width: 100%;
+  margin: 0;
+
+  flex-shrink: 0;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  margin: 0;
+  background-color: var(--color-page);
+}
+
+#root {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+h1, h2, p{
+  margin: 0px;
+  font-family: Arial, sans-serif;
+  color: var(--color-text);
+}
+
+button,
+input,
+textarea {
+  font-family: Arial, sans-serif;
+}
+
+button {
+  margin: 0px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}

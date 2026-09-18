@@ -1,10 +1,70 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Todolist from './Todolist.tsx'
 import type { TodoListData } from './types.ts';
 import './Todo.css'
 
-export default function Todoboard(){
+import { doc, getDoc, setDoc } from 'firebase/firestore';
+import { db } from '../firebase/firebase';
+
+import type { User } from 'firebase/auth';
+
+export default function Todoboard({ user }: { user: User }){
 	const [lists, setLists] = useState<TodoListData[]>([]);
+	const [loaded, setLoaded] = useState(false);
+
+	// Load user's TodoBoard from Firestore
+
+	useEffect(() => {
+		const loadLists = async () => {
+			try {
+				const userDoc = await getDoc(
+					doc(db, 'Users', user.uid)
+				);
+
+				if (userDoc.exists()) {
+					const data = userDoc.data();
+
+					setLists(data.lists ?? []);
+				}
+			} catch (error) {
+				console.error('Failed to load TodoBoard:', error);
+			}
+
+			setLoaded(true);
+		};
+
+		loadLists();
+	}, []);
+
+	// Automatically save lists to Firestore
+
+	useEffect(() => {
+		if (!loaded) {
+			return;
+		}
+
+		const saveLists = async () => {
+			try {
+				await setDoc(
+					doc(db, 'Users', user.uid),
+					{
+						lists: lists
+					},
+					{ merge: true }
+				);
+			} catch (error) {
+				console.error('Failed to save TodoBoard:', error);
+			}
+		};
+
+		const timeout = setTimeout(() => {
+			saveLists();
+		}, 500);
+
+		return () => {
+			clearTimeout(timeout);
+		};
+	}, [lists, loaded]);
 
 	// Todo list functions
 
